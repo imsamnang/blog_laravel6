@@ -23,7 +23,8 @@ class PostController extends Controller
     {
       $this->validate($request,[
 				'title' => 'required|max:100',
-				'body'	=> 'required'
+				'body'	=> 'required',
+				'slug'	=> 'required|alpha_dash|min:5|max:100|unique:posts,slug',
 			]);	
 			$form_data = array(
 				'title' => $request->title,
@@ -49,12 +50,20 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
 			//validate data
-			 $this->validate($request,[
-				'title' => 'required|max:100',
-				'body'	=> 'required'
-			]);	
-			//Save data to database
 			$post = Post::findOrFail($id);
+			if($request->slug == $post->slug){
+				$this->validate($request,[
+					'title' => 'required|max:100',
+					'body'	=> 'required',
+				]);					
+			} else {
+				$this->validate($request,[
+					'title' => 'required|max:100',
+					'body'	=> 'required',
+					'slug'	=> 'required|alpha_dash|min:5|max:100|unique:posts,slug',
+				]);	
+			}
+			//Save data to database
 			$post->title = $request->title;
 			$post->body = $request->body;
 			$post->slug = strtolower($this->make_slug($request->title));

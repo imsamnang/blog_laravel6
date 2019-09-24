@@ -1,5 +1,6 @@
 <?php
 
+Route::view('admin','layouts.master');
 Route::group(['middleware'=>['web']],function(){
   Route::get('blog/{slug}','BlogController@singlePost')
         ->where('slug','[\w\d\-\_]+')
@@ -11,7 +12,6 @@ Route::group(['middleware'=>['web']],function(){
   Route::resource('posts', 'PostController');
   Route::resource('categories', 'CategoryController',['except'=>['create']]);
 });
-
 
 Auth::routes();
 

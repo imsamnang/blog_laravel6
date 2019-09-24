@@ -22,7 +22,7 @@ class CategoryController extends Controller
 			$categories = Category::create([
 				'name' => $request->name
 			]);
-			return redirect()->route('categories.index')->with('success','New Category has been Created');
+			return redirect()->route('categories.index')->with('success','New Category has been Created');	
     }
 
     public function show($id)
@@ -32,8 +32,8 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        //
-    }
+			return view('categories.index');
+		}
 
     public function update(Request $request, $id)
     {

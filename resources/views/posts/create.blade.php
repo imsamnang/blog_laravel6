@@ -16,6 +16,14 @@
 					{!! Form::text('title', null, ['class'=>'form-control','data-parsley-required'=>'','maxlength'=>'100']) !!}
 				</div>
 				<div class="form-group">
+					{!! Form::label('category_id', 'Category:') !!}	
+					<select name="category_id" id="category_id" class="form-control data-parsley-required>
+						@foreach ($categories as $cat)							
+							<option value="{{$cat->id}}">{{$cat->name}}</option>
+						@endforeach
+					</select>
+				</div>				
+				<div class="form-group">
 					{!! Form::label('body', 'Body:') !!}
 					{!! Form::textarea('body', null, ['class'=>'form-control','data-parsley-required'=>'','maxlength'=>'500']) !!}
 				</div>

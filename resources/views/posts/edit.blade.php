@@ -4,6 +4,7 @@
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
+  <link rel="stylesheet" href="{{ asset('/select2/css/select2.min.css') }}">
 @endsection
 
 @section('content')
@@ -17,6 +18,10 @@
       <div class="form-group">
         {!! Form::label('category_id', 'Category:') !!}
         {!! Form::select('category_id', $categories,null,['class'=>'form-control']) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::label('tags', 'Tag:') !!}	
+        {!! Form::select('tags[]', $tags, null, ['class'=>'select2-multi form-control','multiple'=>'multiple']) !!}
       </div>
       <div class="form-group">
         {!! Form::label('body', 'Body:') !!}
@@ -49,4 +54,11 @@
 
 @section('js')
   <script src="{{ asset('/js/parsley.min.js') }}"></script>
+	<script src="{{ asset('select2/js/select2.min.js') }}"></script>
+	<script type="text/javaScript">
+		$(document).ready(function() {
+			$('.select2-multi').select2();
+      // $('.select2-multi').select2().val({!!json_encode($post->tags()->allRelatedIds()->toArray())!!}).trigger('change');
+		});
+	</script>  
 @endsection

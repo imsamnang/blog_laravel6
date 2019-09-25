@@ -3,7 +3,8 @@
 @section('pagetitle','Create New Post')
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
+	<link rel="stylesheet" href="{{ asset('/select2/css/select2.min.css') }}">
 @endsection
 
 @section('content')
@@ -17,9 +18,17 @@
 				</div>
 				<div class="form-group">
 					{!! Form::label('category_id', 'Category:') !!}	
-					<select name="category_id" id="category_id" class="form-control data-parsley-required>
+					<select name="category_id" id="category_id" class="form-control data-parsley-required">
 						@foreach ($categories as $cat)							
 							<option value="{{$cat->id}}">{{$cat->name}}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
+					{!! Form::label('tags', 'Tag:') !!}	
+					<select name="tags[]" id="tags" class="form-control data-parsley-required" multiple="multiple">
+						@foreach ($tags as $tag)							
+							<option value="{{$tag->id}}">{{$tag->name}}</option>
 						@endforeach
 					</select>
 				</div>				
@@ -34,5 +43,13 @@
 @endsection
 
 @section('js')
-  <script src="{{ asset('/js/parsley.min.js') }}"></script>
+	<script src="{{ asset('/js/parsley.min.js') }}"></script>
+	<script src="{{ asset('select2/js/select2.min.js') }}"></script>
+	<script type="text/javaScript">
+		$(document).ready(function() {
+			$('#tags').select2({
+				placeholder: 'Select an tag'
+			});
+		});
+	</script>
 @endsection

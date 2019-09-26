@@ -70,13 +70,13 @@
           </a>
           <ul>
             <li id="products_index">
-              <a class="submenu" href="https://sma.tecdiary.com/admin/products">
+              <a class="submenu" href="#">
               <i class="fa fa-barcode"></i>
               <span class="text"> list products</span>
               </a>
             </li>
             <li id="products_add">
-              <a class="submenu" href="https://sma.tecdiary.com/admin/products/add">
+              <a class="submenu" href="#">
               <i class="fa fa-plus-circle"></i>
               <span class="text"> add product</span>
               </a>
@@ -87,4 +87,13 @@
     </div>
   </div>
 </section>
+<script>
+  $(window).load(function () {
+    $('.mm_products').addClass('active');
+    $('.mm_products').find("ul").first().slideToggle();
+    $('#products_index').addClass('active');
+    $('.mm_products a .chevron').removeClass("closed").addClass("opened");
+  });
+</script>  
 <!-- /.sidebar -->
+

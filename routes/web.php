@@ -1,6 +1,11 @@
 <?php
 
 Route::view('admin','layouts.master');
+Route::view('post_index','menu.post.index');
+Route::view('post_create','menu.post.create');
+Route::view('tag_index','menu.tag.index');
+Route::view('tag_create','menu.tag.create');
+
 Route::group(['middleware'=>['web']],function(){
   Route::get('blog/{slug}','BlogController@singlePost')
         ->where('slug','[\w\d\-\_]+')

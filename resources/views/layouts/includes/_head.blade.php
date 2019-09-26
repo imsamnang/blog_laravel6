@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="{{ asset('assets/bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/skin-red.css') }}">
+  {{-- <link rel="stylesheet" href="{{ asset('assets/dist/css/skins/skin-red.css') }}"> --}}
+  <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
 
   <!-- Google Font -->
   <link rel="stylesheet"

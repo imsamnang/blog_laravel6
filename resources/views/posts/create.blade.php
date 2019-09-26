@@ -4,7 +4,7 @@
 
 @section('css')
 	<link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
-	<link rel="stylesheet" href="{{ asset('/select2/css/select2.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/bower_components/select2/dist/css/select2.min.css') }}">
 @endsection
 
 @section('content')
@@ -44,7 +44,7 @@
 
 @section('js')
 	<script src="{{ asset('/js/parsley.min.js') }}"></script>
-	<script src="{{ asset('select2/js/select2.min.js') }}"></script>
+	<script src="{{ asset('assets/bower_components/select2/dist/js/select2.min.js') }}"></script>
 	<script type="text/javaScript">
 		$(document).ready(function() {
 			$('#tags').select2({

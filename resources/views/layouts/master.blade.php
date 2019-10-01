@@ -1,7 +1,5 @@
 @include('layouts.includes._head')
 
-@stack('css')
-
 <body class="sidebar-mini skin-red fixed">
 <div class="wrapper">
   <!-- Main Header -->

@@ -1,10 +1,11 @@
-@extends('layouts.main')
+{{-- @extends('layouts.main') --}}
+@extends('layouts.master')
 
 @section('pagetitle','| All Tags')
 
-@section('css')
+@push('css')
   <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-@endsection
+@endpush
 
 @section('content')    
   <div class="container">
@@ -41,6 +42,6 @@
   </div>
 @endsection
 
-@section('js')
+@push('js')
     
-@endsection
+@endpush

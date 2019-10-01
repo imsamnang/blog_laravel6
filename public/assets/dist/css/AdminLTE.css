@@ -18,7 +18,7 @@ body {
   height: 100%;
 }
 body {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   overflow-x: hidden;
   overflow-y: auto;
@@ -451,7 +451,8 @@ a:focus {
   }
 }
 .sidebar {
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+  background: #40454a;
 }
 .sidebar-form input:focus {
   border-color: transparent;
@@ -3079,9 +3080,10 @@ table.text-center th {
   margin: 0;
 }
 .treeview-menu > li > a {
-  padding: 5px 5px 5px 15px;
+  padding: 10px 0px 0px 15px;
   display: block;
   font-size: 14px;
+  height: 40px;
 }
 .treeview-menu > li > a > .fa,
 .treeview-menu > li > a > .glyphicon,

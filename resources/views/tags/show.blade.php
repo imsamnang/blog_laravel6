@@ -1,7 +1,12 @@
-@extends('layouts.main')
+{{-- @extends('layouts.main') --}}
+@extends('layouts.master')
 
 @section('pagetitle',"| $tag->name Tag")
+
+@push('css')
     
+@endpush
+
 @section('content')
   <div class="row">
     <div class="col-md-8">
@@ -45,3 +50,7 @@
     </div>
   </div>
 @endsection
+
+@push('js')
+    
+@endpush

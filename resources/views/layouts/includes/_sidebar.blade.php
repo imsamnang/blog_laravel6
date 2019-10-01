@@ -13,87 +13,46 @@
   </div> --}}
 
   <!-- Sidebar Menu -->
-  {{-- <ul class="sidebar-menu" data-widget="tree">
+  <ul class="sidebar-menu" data-widget="tree">
     <li class="{{Request::is('admin')?'active':''}}">
       <a href="/admin"><i class="fa fa-link"></i> <span>DASHBOARD</span></a>
     </li>
+    <li class="{{Request::is('tags*')?'treeview menu-open':'treeview'}}">
+        <a href="#"><i class="fa fa-link"></i> <span>Manage Tags</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu" style="display:{{Request::is('tags*')?'block;':'none;'}}">
+          <li class="{{Request::is('tags/create')?'active':''}}">
+            <a href="{{ route('tags.create') }}"><i class="fa fa-link"></i> Add Tag</a>
+          </li>
+          <li class="{{Request::is('tags')?'active':''}}">
+            <a href="{{ route('tags.index') }}"><i class="fa fa-link"></i> List Tags</a>
+          </li>
+        </ul>
+      </li>
+      <li class="{{Request::is('posts*')?'treeview menu-open':'treeview'}}">
+        <a href="#"><i class="fa fa-link"></i> <span>Manage Posts</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu" style="display:{{Request::is('posts *')?'block;':'none;'}}">
+          <li class="{{Request::is('posts/create')?'active':''}}">
+            <a href="{{ route('posts.create') }}">Add Post</a>
+          </li>
+          <li class="{{Request::is('posts')?'active':''}}">
+            <a href="{{ route('posts.index') }}">List Posts</a>
+          </li>
+        </ul>
+      </li>
     <!-- Optionally, you can add icons to the links -->
     <li><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-
-  <li class="{{Request::is('tag_*')?'treeview menu-open':'treeview'}}">
-      <a href="#"><i class="fa fa-link"></i> <span>Manage Tags</span>
-        <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-      </a>
-      <ul class="treeview-menu" style="display:{{Request::is('tag_*')?'block;':'none;'}}">
-        <li class="{{Request::is('tag_create')?'active':''}}">
-          <a href="/tag_create">Add Tag</a>
-        </li>
-        <li class="{{Request::is('tag_index')?'active':''}}">
-          <a href="/tag_index">List Tags</a>
-        </li>
-      </ul>
-    </li>
-    <li class="{{Request::is('post_*')?'treeview menu-open':'treeview'}}">
-      <a href="#"><i class="fa fa-link"></i> <span>Manage Posts</span>
-        <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-      </a>
-      <ul class="treeview-menu" style="display:{{Request::is('post_*')?'block;':'none;'}}">
-        <li class="{{Request::is('post_create')?'active':''}}">
-          <a href="/post_create">Add Post</a>
-        </li>
-        <li class="{{Request::is('post_index')?'active':''}}">
-          <a href="/post_index">List Posts</a>
-        </li>
-      </ul>
-    </li>    
-  </ul> --}}
+    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>          
+  </ul>
   <!-- /.sidebar-menu -->
-  <div id="sidebar-left">
-    <div class="sidebar-nav nav-collapse collapse navbar-collapse" id="sidebar_menu">
-      <ul class="nav main-menu">
-        <li class="mm_welcome">
-          <a href="#">
-            <i class="fa fa-dashboard"></i>
-            <span class="text"> dashboard</span>
-          </a>
-        </li>
-        <li class="mm_products">
-          <a class="dropmenu" href="#">
-            <i class="fa fa-barcode"></i>
-            <span class="text"> products </span>
-            <span class="chevron closed"></span>
-          </a>
-          <ul>
-            <li id="products_index">
-              <a class="submenu" href="#">
-              <i class="fa fa-barcode"></i>
-              <span class="text"> list products</span>
-              </a>
-            </li>
-            <li id="products_add">
-              <a class="submenu" href="#">
-              <i class="fa fa-plus-circle"></i>
-              <span class="text"> add product</span>
-              </a>
-            </li>          
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
 </section>
-<script>
-  $(window).load(function () {
-    $('.mm_products').addClass('active');
-    $('.mm_products').find("ul").first().slideToggle();
-    $('#products_index').addClass('active');
-    $('.mm_products a .chevron').removeClass("closed").addClass("opened");
-  });
-</script>  
+ 
 <!-- /.sidebar -->
 

@@ -1,11 +1,12 @@
-@extends('layouts.main')
+{{-- @extends('layouts.main') --}}
+@extends('layouts.master')
 
 @section('pagetitle','Create New Post')
 
-@section('css')
+@push('css')
 	<link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/bower_components/select2/dist/css/select2.min.css') }}">
-@endsection
+@endpush
 
 @section('content')
   <div class="row">
@@ -42,7 +43,7 @@
   </div>
 @endsection
 
-@section('js')
+@push('js')
 	<script src="{{ asset('/js/parsley.min.js') }}"></script>
 	<script src="{{ asset('assets/bower_components/select2/dist/js/select2.min.js') }}"></script>
 	<script type="text/javaScript">
@@ -52,4 +53,4 @@
 			});
 		});
 	</script>
-@endsection
+@endpush

@@ -1,11 +1,12 @@
-@extends('layouts.main')
+{{-- @extends('layouts.main') --}}
+@extends('layouts.master')
 
 @section('pagetitle','Create New Post')
 
-@section('css')
+@push('css')
   <link rel="stylesheet" href="{{ asset('/css/parsley.css') }}">
-<link rel="stylesheet" href="{{asset('css/styles.css')}}">
-@endsection
+  <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+@endpush
 
 @section('content')
   <div class="row">
@@ -56,6 +57,6 @@
   </div>
 @endsection
 
-@section('js')
+@push('js')
   <script src="{{ asset('/js/parsley.min.js') }}"></script>
-@endsection
+@endpush

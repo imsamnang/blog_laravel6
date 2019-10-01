@@ -1,10 +1,11 @@
-@extends('layouts.main')
+{{-- @extends('layouts.main') --}}
+@extends('layouts.master')
 
 @section('pagetitle','Post Show')
 
-@section('css')
-<link rel="stylesheet" href="{{asset('/css/styles.css')}}">
-@endsection
+@push('css')
+  <link rel="stylesheet" href="{{asset('/css/styles.css')}}">
+@endpush
 
 @section('content')
   @include('layouts.partials._messages')
@@ -56,6 +57,6 @@
     </div>
 @endsection
 
-@section('js')
+@push('js')
     
-@endsection
+@endpush

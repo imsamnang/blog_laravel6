@@ -17,6 +17,8 @@ Route::group(['middleware'=>['web']],function(){
   Route::resource('posts', 'PostController');
   Route::resource('categories', 'CategoryController',['except'=>['create']]);
   Route::resource('tags', 'TagController');
+  // comment
+  Route::post('comments/{post_id}', 'CommentController@store')->name('comments.store');
 });
 
 

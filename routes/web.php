@@ -19,6 +19,10 @@ Route::group(['middleware'=>['web']],function(){
   Route::resource('tags', 'TagController');
   // comment
   Route::post('comments/{post_id}', 'CommentController@store')->name('comments.store');
+  Route::get('comments/{id}/edit', 'CommentController@edit')->name('comments.edit');
+  Route::put('comments/{id}/update', 'CommentController@update')->name('comments.update');
+  Route::delete('comments/{id}/destroy', 'CommentController@destroy')->name('comments.destroy');
+  Route::get('comments/{id}/delete', 'CommentController@delete')->name('comments.delete');
 });
 
 

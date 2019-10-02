@@ -35,7 +35,7 @@
 				</div>				
 				<div class="form-group">
 					{!! Form::label('body', 'Body:') !!}
-					{!! Form::textarea('body', null, ['class'=>'form-control','data-parsley-required'=>'','maxlength'=>'500']) !!}
+					{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
 				</div>
 				{!! Form::submit('Submit', ['class'=>'btn btn-success btn-block']) !!}
 			{!! Form::close() !!}
@@ -46,10 +46,15 @@
 @push('js')
 	<script src="{{ asset('/js/parsley.min.js') }}"></script>
 	<script src="{{ asset('assets/bower_components/select2/dist/js/select2.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script>
 	<script type="text/javaScript">
 		$(document).ready(function() {
 			$('#tags').select2({
 				placeholder: 'Select an tag'
+			});
+			tinymce.init({
+				selector:'textarea',
+				plugins: 'advlist autolink link image imagetools lists charmap print preview code'
 			});
 		});
 	</script>

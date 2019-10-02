@@ -31,11 +31,11 @@
             <th>Action</th>
           </thead>
           <tbody>
-            @foreach ($posts as $key => $post)                
+            @foreach ($posts as $key => $post)
               <tr>
               <td>{{$post->id}}</td>
               <td>{{$post->title}}</td>
-              <td>{!!substr($post->body,0,50)!!}{{strlen($post->body)>50?"...":""}}</td>
+              <td>{{ substr(strip_tags($post->body),0,50) }}{{ strlen(strip_tags($post->body))>50?'...':'' }}</td>
               <td>{{date('M j, Y',strtotime($post->created_at))}}</td>
                 <td>
                   {!! Form::open(['route'=>['posts.destroy',$post->id],'method'=>'DELETE']) !!}            

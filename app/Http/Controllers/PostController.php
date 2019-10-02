@@ -6,6 +6,7 @@ use App\Tag;
 use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
+use Mews\Purifier\Facades\Purifier;
 
 class PostController extends Controller
 {
@@ -32,7 +33,7 @@ class PostController extends Controller
 			]);
 			$form_data = array(
 				'title' => $request->title,
-				'body' 	=> $request->body,
+				'body' 	=> Purifier::clean($request->body),
 				'category_id' 	=> $request->category_id,
 				'slug'	=> strtolower($this->make_slug($request->title))
 		);
@@ -77,7 +78,7 @@ class PostController extends Controller
 		// }
 		//Save data to database
 		$post->title = $request->title;
-		$post->body = $request->body;
+		$post->body = Purifier::clean($request->body);
 		$post->category_id = $request->category_id;
 		$post->slug = strtolower($this->make_slug($request->title));
 		$post->save();

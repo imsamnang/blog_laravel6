@@ -70,7 +70,7 @@ class CommentController extends Controller
 		$comment = Comment::findOrFail($id);
 		$post_id = $comment->post->id;
 		$comment->delete();
-		return redirect()->route('posts.show',$post_id)->with('success','Comment has been deleted');
+		return redirect()->route('posts.show',$post_id)->with('success','Comment has been deleted'); 
 	}
 
 }

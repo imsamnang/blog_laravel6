@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
 use Mews\Purifier\Facades\Purifier;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -31,11 +32,18 @@ class PostController extends Controller
 			'category_id' => 'required|integer'
 			// 'slug'	=> 'required|alpha_dash|min:5|max:100|unique:posts,slug'
 			]);
+			if($request->hasFile('featured_image')){
+				$image = $request->file('featured_image');
+				$filename = time().'.'.$image->getClientOriginalExtension();
+				$location = public_path('/uploads/images/'.$filename);
+				Image::make($image)->resize(800,400)->save($location);
+			}
 			$form_data = array(
 				'title' => $request->title,
 				'body' 	=> Purifier::clean($request->body),
 				'category_id' 	=> $request->category_id,
-				'slug'	=> strtolower($this->make_slug($request->title))
+				'slug'	=> strtolower($this->make_slug($request->title)),
+				'image' => $filename
 		);
 		$post = Post::create($form_data);
 		// $post->tags()->sync($request->tags,false);
@@ -70,18 +78,28 @@ class PostController extends Controller
 	{
 		//validate data
 		$post = Post::findOrFail($id);
-			$this->validate($request,[
-				'title' => 'required|max:100',
-				'body'	=> 'required',
-				'category_id' => 'required'
-			]);	
-		// }
+		$oldimage = $post->image;
+		$this->validate($request,[
+			'title' => 'required|max:100',
+			'body'	=> 'required',
+			'category_id' => 'required'
+		]);	
+		if($request->hasFile('featured_image')){
+			$image = $request->file('featured_image');
+			$filename = time().'.'.$image->getClientOriginalExtension();
+			$location = public_path('/uploads/images/'.$filename);
+			Image::make($image)->resize(800,400)->save($location);
+		} else {
+			$filename= $oldimage;
+		}
 		//Save data to database
 		$post->title = $request->title;
 		$post->body = Purifier::clean($request->body);
 		$post->category_id = $request->category_id;
 		$post->slug = strtolower($this->make_slug($request->title));
+		$post->image = $filename;
 		$post->save();
+		
 		if (isset($request->tags)) {
 			$post->tags()->sync($request->tags);
 		} else {

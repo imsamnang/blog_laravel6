@@ -24,6 +24,10 @@
         {!! Form::label('tags', 'Tag:') !!}	
         {!! Form::select('tags[]', $tags, null, ['class'=>'select2-multi form-control','multiple'=>'multiple']) !!}
       </div>
+      	<div class="form-group">
+					{!! Form::label('featured_image', 'Upload Feature Image') !!}
+					{!! Form::file('featured_image', ['class'=>'form-control']) !!}
+				</div>
       <div class="form-group">
         {!! Form::label('body', 'Body:') !!}
         {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
@@ -56,7 +60,8 @@
 @push('js')
   <script src="{{ asset('/js/parsley.min.js') }}"></script>
   <script src="{{ asset('assets/bower_components/select2/dist/js/select2.min.js') }}"></script>
-  <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script>
+  <script src="{{ asset('assets\plugins\ckeditor4\ckeditor.js') }}"></script>
+  {{-- <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script> --}}
 	<script type="text/javaScript">
 		$(document).ready(function() {
 			$('.select2-multi').select2();

@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
 			<h1>Create New Post</h1>
-			{!! Form::open(['route' => 'posts.store','data-parsley-validate'=>'']) !!}
+			{!! Form::open(['route' => 'posts.store','data-parsley-validate'=>'','files' => true]) !!}
 				<div class="form-group">
 					{!! Form::label('title', 'Title:') !!}
 					{!! Form::text('title', null, ['class'=>'form-control','data-parsley-required'=>'','maxlength'=>'100']) !!}
@@ -38,6 +38,10 @@
 					{!! Form::label('body', 'Body:') !!}
 					{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
 				</div> --}}
+				<div class="form-group">
+					{!! Form::label('featured_image', 'Upload Feature Image') !!}
+					{!! Form::file('featured_image', ['class'=>'form-control']) !!}
+				</div>
 				<div class="form-group">
 					{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
 				</div>			

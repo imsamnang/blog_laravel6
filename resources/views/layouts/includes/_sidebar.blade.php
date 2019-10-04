@@ -38,7 +38,7 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
-        <ul class="treeview-menu" style="display:{{Request::is('posts *')?'block;':'none;'}}">
+        <ul class="treeview-menu" style="display:{{Request::is('posts*')?'block;':'none;'}}">
           <li class="{{Request::is('posts/create')?'active':''}}">
             <a href="{{ route('posts.create') }}">Add Post</a>
           </li>

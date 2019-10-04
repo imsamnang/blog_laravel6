@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
 use Mews\Purifier\Facades\Purifier;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
@@ -29,7 +30,8 @@ class PostController extends Controller
 		$this->validate($request,[
 			'title' => 'required|max:100',
 			'body'	=> 'required',
-			'category_id' => 'required|integer'
+			'category_id' => 'required|integer',
+			'featured_image' => 'required|image'
 			// 'slug'	=> 'required|alpha_dash|min:5|max:100|unique:posts,slug'
 			]);
 			if($request->hasFile('featured_image')){
@@ -86,6 +88,7 @@ class PostController extends Controller
 		]);	
 		if($request->hasFile('featured_image')){
 			$image = $request->file('featured_image');
+			File::delete(public_path('uploads/images/'.$oldimage));
 			$filename = time().'.'.$image->getClientOriginalExtension();
 			$location = public_path('/uploads/images/'.$filename);
 			Image::make($image)->resize(800,400)->save($location);
@@ -112,6 +115,7 @@ class PostController extends Controller
 	public function destroy($id)
 	{
 		$post = Post::findOrFail($id);
+		File::delete(public_path('uploads/images/'.$post->image));
 		$post->tags()->detach();
 		$post->delete();
 		return redirect()->route('posts.index')->with('success','Data was deleted succesfully');

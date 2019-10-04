@@ -9,6 +9,9 @@
 @section('content')
   @include('layouts.partials._messages')
   <div class="col-md-8 col-md-offset-2">
+    @if ($post->image)        
+      <img src="{{asset('uploads/images/'.$post->image)}}" width="800" height="400" alt="{{$post->title}}">
+    @endif
     <h1>{!! $post->title !!}</h1>
     <p class="lead">{!! $post->body !!}</p>
     <hr>
